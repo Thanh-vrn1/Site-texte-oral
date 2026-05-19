@@ -1,0 +1,1106 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>12 Textes Oraux — Bac Français</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,600;0,700;1,400&family=DM+Serif+Display&family=JetBrains+Mono:wght@400&display=swap');
+
+:root {
+  --bg: #0f1117;
+  --surface: #1a1d27;
+  --card: #1e2130;
+  --border: #2a2d3e;
+  --text: #e8e9f0;
+  --muted: #7a7d8e;
+  --poetry: #22c55e;
+  --ideas: #f59e0b;
+  --novel: #60a5fa;
+  --theatre: #c084fc;
+  --gold: #fbbf24;
+  --red: #f87171;
+  --intro-bg: #1a2520;
+  --prob-bg: #1e1a0e;
+  --mvt-bg: #16192b;
+  --ccl-bg: #1a1520;
+}
+
+* { margin:0; padding:0; box-sizing:border-box; }
+
+body {
+  font-family: 'DM Sans', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  font-size: 14px;
+  line-height: 1.7;
+}
+
+/* NAV */
+.nav {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: #0a0c14ee;
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--border);
+  padding: 10px 20px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  align-items: center;
+  justify-content: center;
+}
+.nav a {
+  text-decoration: none;
+  font-size: 11px;
+  font-weight: 700;
+  padding: 4px 11px;
+  border-radius: 20px;
+  border: 1px solid var(--border);
+  color: var(--muted);
+  transition: all 0.15s;
+}
+.nav a:hover, .nav a.active { color: #fff; border-color: var(--poetry); background: var(--poetry); }
+.nav a.p { --c: var(--poetry); }
+.nav a.i { --c: var(--ideas); }
+.nav a.n { --c: var(--novel); }
+.nav a.t { --c: var(--theatre); }
+.nav a.p:hover { background: var(--poetry); border-color: var(--poetry); }
+.nav a.i:hover { background: var(--ideas); border-color: var(--ideas); color: #111; }
+.nav a.n:hover { background: var(--novel); border-color: var(--novel); }
+.nav a.t:hover { background: var(--theatre); border-color: var(--theatre); }
+
+/* HEADER */
+header {
+  text-align: center;
+  padding: 50px 20px 30px;
+}
+header h1 {
+  font-family: 'DM Serif Display', serif;
+  font-size: 2.2em;
+  margin-bottom: 8px;
+  background: linear-gradient(135deg, var(--poetry), var(--novel), var(--theatre));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+header p { color: var(--muted); font-size: 13px; }
+
+/* SECTION TITLE */
+.section-title {
+  max-width: 860px;
+  margin: 40px auto 16px;
+  padding: 0 20px;
+  font-family: 'DM Serif Display', serif;
+  font-size: 1.3em;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.section-title::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--border);
+}
+
+/* TEXTE CARD */
+.texte {
+  max-width: 860px;
+  margin: 0 auto 30px;
+  padding: 0 20px;
+  scroll-margin-top: 70px;
+}
+
+.texte-header {
+  background: var(--card);
+  border-radius: 12px 12px 0 0;
+  padding: 18px 24px 14px;
+  border: 1px solid var(--border);
+  border-bottom: none;
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+}
+.texte-num {
+  font-family: 'DM Serif Display', serif;
+  font-size: 2em;
+  line-height: 1;
+  min-width: 36px;
+}
+.p .texte-num { color: var(--poetry); }
+.i .texte-num { color: var(--ideas); }
+.n .texte-num { color: var(--novel); }
+.t .texte-num { color: var(--theatre); }
+.texte-info h2 { font-size: 15px; font-weight: 700; line-height: 1.3; margin-bottom: 4px; }
+.texte-info .meta { font-size: 11px; color: var(--muted); }
+.badge {
+  margin-left: auto;
+  font-size: 9px;
+  font-weight: 700;
+  padding: 3px 9px;
+  border-radius: 20px;
+  letter-spacing: 0.5px;
+  white-space: nowrap;
+}
+.p .badge { background: #0f2a1a; color: var(--poetry); border: 1px solid var(--poetry); }
+.i .badge { background: #2a1f00; color: var(--ideas); border: 1px solid var(--ideas); }
+.n .badge { background: #0f1f3a; color: var(--novel); border: 1px solid var(--novel); }
+.t .badge { background: #1f0f2a; color: var(--theatre); border: 1px solid var(--theatre); }
+
+.texte-body {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 0 0 12px 12px;
+  overflow: hidden;
+}
+
+/* ORAL BLOCK */
+.block {
+  padding: 18px 24px;
+  border-bottom: 1px solid var(--border);
+}
+.block:last-child { border-bottom: none; }
+
+.block-label {
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.p .block-label { color: var(--poetry); }
+.i .block-label { color: var(--ideas); }
+.n .block-label { color: var(--novel); }
+.t .block-label { color: var(--theatre); }
+.block-label::after { content: ''; flex:1; height: 1px; background: var(--border); }
+
+.intro-text {
+  background: var(--intro-bg);
+  border-radius: 8px;
+  padding: 14px 18px;
+  font-size: 13.5px;
+  line-height: 1.75;
+}
+.intro-text .timing {
+  display: inline-block;
+  background: #0f2a1a;
+  color: var(--poetry);
+  font-size: 10px;
+  font-weight: 700;
+  padding: 2px 8px;
+  border-radius: 4px;
+  margin-bottom: 10px;
+}
+
+.prob-box {
+  background: var(--prob-bg);
+  border-left: 3px solid var(--gold);
+  border-radius: 6px;
+  padding: 12px 16px;
+  font-style: italic;
+  font-size: 14px;
+  color: #fde68a;
+  line-height: 1.6;
+}
+
+.mvt-block {
+  background: var(--mvt-bg);
+  border-radius: 8px;
+  padding: 14px 18px;
+  margin-bottom: 12px;
+}
+.mvt-block:last-child { margin-bottom: 0; }
+.mvt-title {
+  font-weight: 700;
+  font-size: 12px;
+  margin-bottom: 8px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.mvt-badge {
+  font-size: 9px;
+  font-weight: 800;
+  padding: 2px 8px;
+  border-radius: 4px;
+}
+.p .mvt-badge { background: var(--poetry); color: #000; }
+.i .mvt-badge { background: var(--ideas); color: #000; }
+.n .mvt-badge { background: var(--novel); color: #fff; }
+.t .mvt-badge { background: var(--theatre); color: #fff; }
+.mvt-text { font-size: 13.5px; line-height: 1.75; }
+.cite {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12px;
+  color: #a5b4fc;
+  background: #1e2140;
+  padding: 1px 5px;
+  border-radius: 3px;
+}
+.proc { font-weight: 700; color: var(--text); }
+.effet { color: var(--muted); font-style: italic; }
+
+.ccl-box {
+  background: var(--ccl-bg);
+  border-left: 3px solid var(--theatre);
+  border-radius: 6px;
+  padding: 12px 16px;
+  font-size: 13.5px;
+  line-height: 1.7;
+}
+.ccl-box .ouv { color: var(--theatre); font-weight: 700; }
+
+.timer-bar {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+  margin-bottom: 14px;
+}
+.timer-pill {
+  font-size: 10px;
+  font-weight: 700;
+  padding: 3px 10px;
+  border-radius: 20px;
+  border: 1px solid var(--border);
+  color: var(--muted);
+}
+.timer-pill.active { background: #1a2a1a; color: var(--poetry); border-color: var(--poetry); }
+
+/* LECTURE */
+.lecture-note {
+  background: #1a1500;
+  border: 1px solid #3a3000;
+  border-radius: 6px;
+  padding: 10px 14px;
+  font-size: 12px;
+  color: #fbbf24;
+  margin: 10px 0;
+}
+
+@media (max-width: 600px) {
+  .texte-header { flex-wrap: wrap; }
+  .badge { margin-left: 0; }
+  header h1 { font-size: 1.6em; }
+}
+
+@media print {
+  body { background: #fff; color: #000; font-size: 11px; }
+  .nav { display: none; }
+  .texte { break-inside: avoid; }
+  .card, .texte-body, .texte-header { background: #fff; border-color: #ccc; color: #000; }
+  .prob-box { background: #fffbe6; color: #7a5a00; border-color: #d4a017; }
+  .mvt-block { background: #f8f8f8; }
+  .ccl-box { background: #f5f0ff; }
+  .cite { color: #3333cc; background: #f0f0ff; }
+}
+</style>
+</head>
+<body>
+
+<div class="nav">
+  <a href="#t1" class="p">T1</a>
+  <a href="#t2" class="p">T2</a>
+  <a href="#t3" class="p">T3</a>
+  <a href="#t4" class="i">T4</a>
+  <a href="#t5" class="i">T5</a>
+  <a href="#t6" class="i">T6</a>
+  <a href="#t7" class="n">T7</a>
+  <a href="#t8" class="n">T8</a>
+  <a href="#t9" class="n">T9</a>
+  <a href="#t10" class="t">T10</a>
+  <a href="#t11" class="t">T11</a>
+  <a href="#t12" class="t">T12</a>
+</div>
+
+<header>
+  <h1>12 Textes à l'oral</h1>
+  <p>Textes complets calibrés 12 min · À apprendre par cœur · 1STI2D1 · Bac 26 mai 2026</p>
+</header>
+
+<div class="section-title p">Poésie — La poésie, la nature, l'intime</div>
+
+<!-- ========================= T1 ========================= -->
+<div class="texte p" id="t1">
+<div class="texte-header">
+  <div class="texte-num">1</div>
+  <div class="texte-info">
+    <h2>Anna de Noailles — « La Vie profonde »</h2>
+    <div class="meta">Le Cœur innombrable, 1901 · 4 quatrains d'alexandrins · Rimes embrassées</div>
+  </div>
+  <span class="badge">POÉSIE</span>
+</div>
+<div class="texte-body">
+
+<div class="block">
+<div class="block-label">Introduction (~1 min 30)</div>
+<div class="intro-text">
+<div class="timing">⏱ ~1 min 30</div>
+La nature a toujours été une grande source d'inspiration pour les poètes, de Ronsard à Hélène Dorion en passant par les romantiques tels que Lamartine ou Hugo. Anna de Noailles, poétesse française d'origine roumaine et grecque, née en 1876 et morte en 1933, est une héritière de ce romantisme. Elle place la sensation et la fusion avec la nature au cœur de son écriture.<br><br>
+« La Vie profonde » est un poème tiré de son recueil <em>Le Cœur innombrable</em>, publié en 1901. Ce texte comporte quatre quatrains d'alexandrins aux rimes embrassées. Dans ce poème, la poétesse présente la vie humaine vécue en fusion avec la nature : une vie brute, extatique, traversée par d'intenses sensations.
+</div>
+<div class="lecture-note">🔊 LECTURE À VOIX HAUTE — Soigner les 12 syllabes des alexandrins</div>
+<div class="prob-box">Comment, à travers ce poème liant l'arbre et l'humain, la poétesse nous invite-t-elle à vivre pleinement, intensément ?</div>
+<div style="margin-top:12px; font-size:13px; color:var(--muted);">
+Nous verrons d'abord l'association puis la fusion entre humanité et nature dans la première strophe, puis nous analyserons comment le poème invite à ressentir la brûlure de la vie dans la deuxième strophe et le début de la troisième, et enfin nous montrerons comment la poétesse nous invite à embrasser les opposés dans la fin du poème.
+</div>
+</div>
+
+<div class="block">
+<div class="block-label">Explication linéaire (~8 min)</div>
+
+<div class="mvt-block">
+<div class="mvt-title"><span class="mvt-badge">MVT 1</span> Strophe 1 — Association puis fusion humanité / nature</div>
+<div class="mvt-text">
+Le poème s'ouvre sur l'infinitif <span class="proc">« Être »</span> qui donne d'emblée une portée universelle au propos : il ne s'agit pas d'un individu précis mais de l'être humain en général. La <span class="proc">comparaison</span> <span class="cite">« ainsi qu'un arbre humain »</span> fusionne immédiatement l'homme et la nature dès le premier vers. Cet oxymore <span class="cite">« arbre humain »</span> abolit la frontière entre les deux règnes.<br><br>
+Au vers 2, la <span class="proc">métaphore</span> <span class="cite">« un profond feuillage »</span> pour désigner les désirs transforme l'intériorité humaine en réalité végétale. Les <span class="proc">infinitifs</span> <span class="cite">Être, Étendre, Sentir</span> en tête de vers donnent une portée universelle : sans sujet précis, ces gestes concernent tout le monde.<br><br>
+Aux vers 3 et 4, la <span class="proc">métaphore</span> <span class="cite">« la sève universelle »</span> qui afflue dans ses mains complète la fusion totale : la force vitale de la nature circule dans le corps humain comme la sève dans l'arbre. Le <span class="proc">point d'exclamation</span> final traduit l'enthousiasme, presque l'extase.
+</div>
+</div>
+
+<div class="mvt-block">
+<div class="mvt-title"><span class="mvt-badge">MVT 2</span> Strophe 2 + début str. 3 — Ressentir la brûlure de la vie</div>
+<div class="mvt-text">
+La deuxième strophe s'ouvre sur l'infinitif <span class="proc">« Vivre »</span>, véritable mot-programme. Il ne s'agit plus seulement d'être, mais de vivre pleinement. On note une <span class="proc">accumulation des 5 sens</span> : la vue avec <span class="cite">« rayons du soleil sur la face »</span>, le goût avec <span class="cite">« Boire le sel ardent »</span>, le toucher avec l'adverbe <span class="cite">« chaudement »</span>.<br><br>
+La <span class="proc">métaphore</span> <span class="cite">« Boire le sel ardent des embruns et des pleurs »</span> mêle la mer et les larmes : vivre intensément, c'est aussi accepter la souffrance. L'<span class="proc">antithèse</span> <span class="cite">« la joie et la douleur »</span> confirme ce principe : la vie profonde embrasse tous les contraires sans les hiérarchiser.<br><br>
+Au début de la troisième strophe, les <span class="proc">quatre éléments</span> sont convoqués : <span class="cite">« l'air, le feu et le sang »</span> — le sang renvoyant à la terre et à l'eau. L'homme contient l'univers entier en lui. La comparaison avec le vent traduit un mouvement intense et incontrôlable.
+</div>
+</div>
+
+<div class="mvt-block">
+<div class="mvt-title"><span class="mvt-badge">MVT 3</span> Fin str. 3 + str. 4 — Embrasser les opposés</div>
+<div class="mvt-text">
+Les vers 11 et 12 multiplient les <span class="proc">antithèses</span> : <span class="cite">« S'élever au réel et pencher au mystère »</span> place l'homme entre le concret et l'inconnu. <span class="cite">« Être le jour qui monte et l'ombre qui descend »</span> en fait l'incarnation même des contraires : il n'est pas dans la lumière ou dans l'ombre, il est les deux à la fois.<br><br>
+La dernière strophe poursuit avec des images visuelles riches. La <span class="proc">comparaison</span> <span class="cite">« Comme du pourpre soir aux couleurs de cerise »</span> crée un véritable tableau aux teintes chaudes. L'<span class="proc">antithèse</span> <span class="cite">« la flamme et l'eau »</span> qui coulent du cœur condense une dernière fois l'union des contraires.<br><br>
+Le poème s'achève sur une image contemplative et mystique : <span class="cite">« Avoir l'âme qui rêve, au bord du monde assise… »</span>. L'âme est <span class="proc">personnifiée</span>, placée au seuil de l'infini. Les <span class="proc">points de suspension</span> laissent le sens ouvert et invitent le lecteur lui-même à la méditation.
+</div>
+</div>
+</div>
+
+<div class="block">
+<div class="block-label">Conclusion (~30 sec)</div>
+<div class="ccl-box">
+Ce poème célèbre donc une vie vécue par les sensations, en fusion totale avec la nature. De l'association initiale entre l'homme et l'arbre à l'embrassement final de tous les contraires, la poétesse nous invite à une existence pleine et intense, où le corps prime sur l'intellect.<br><br>
+<span class="ouv">Ouverture :</span> On peut noter l'opposition avec Descartes et son « je pense donc je suis » : chez Anna de Noailles, la pensée n'est jamais mentionnée. C'est la sensation qui définit l'existence, ce qui rapproche son écriture de celle d'Hélène Dorion dans <em>Mes forêts</em>.
+</div>
+</div>
+
+</div>
+</div>
+
+<!-- ========================= T2 ========================= -->
+<div class="texte p" id="t2">
+<div class="texte-header">
+  <div class="texte-num">2</div>
+  <div class="texte-info">
+    <h2>Hélène Dorion — « Mes forêts sont de longues traînées de temps »</h2>
+    <div class="meta">Mes forêts, 2021 · Poème liminaire · Vers libres non ponctués</div>
+  </div>
+  <span class="badge">POÉSIE</span>
+</div>
+<div class="texte-body">
+
+<div class="block">
+<div class="block-label">Introduction (~1 min 30)</div>
+<div class="intro-text">
+<div class="timing">⏱ ~1 min 30</div>
+La nature est une grande source d'inspiration pour les poètes, de Ronsard aux romantiques jusqu'à nos jours. Hélène Dorion, poétesse québécoise contemporaine, s'inscrit dans cette tradition en faisant de la forêt une métaphore de l'intériorité. Son recueil <em>Mes forêts</em>, paru en 2021, a été écrit durant la période de confinement liée à la crise COVID-19, un contexte propice à l'introspection et à l'intime.<br><br>
+Ce texte est le poème liminaire, c'est-à-dire inaugural du recueil. Il est l'un des cinq poèmes commençant par <span class="cite">« mes forêts sont… »</span> que l'on pourrait lire comme un seul long poème en pointillés qui parcourt tout le recueil. Ce poème en vers libres nous permet d'entrer dans l'univers poétique et imaginaire de la poétesse.
+</div>
+<div class="lecture-note">🔊 LECTURE À VOIX HAUTE — Vers libres non ponctués : laisser des silences aux espaces visuels</div>
+<div class="prob-box">En quoi ce poème inaugural inscrit-il d'emblée la forêt dans un imaginaire poétique ?</div>
+<div style="margin-top:12px;font-size:13px;color:var(--muted);">
+Nous verrons d'abord comment la première strophe nous emmène du cosmos à l'intime, puis comment la deuxième strophe évoque des bourrasques intérieures, et enfin comment les deux dernières strophes ouvrent sur l'espoir et l'immensité intérieure.
+</div>
+</div>
+
+<div class="block">
+<div class="block-label">Explication linéaire (~8 min)</div>
+
+<div class="mvt-block">
+<div class="mvt-title"><span class="mvt-badge">MVT 1</span> Strophe 1 — Du cosmos à l'intime</div>
+<div class="mvt-text">
+La première strophe de ce poème nous fait découvrir une écriture libérée de toutes contraintes formelles avec l'usage de <span class="proc">vers libres non ponctués</span>. Le premier vers s'ouvre sur le groupe nominal <span class="cite">« Mes forêts »</span> qui fait écho au titre de l'œuvre. L'usage du <span class="proc">possessif « Mes »</span> nous fait entrer dans la sphère intime de la poétesse. La longueur étirée de ce premier vers suggère visuellement les « longues traînées de temps », accentuée par l'<span class="proc">assonance en [on]</span> et l'<span class="proc">allitération des dentales [d] et [t]</span> qui prolongent les sonorités.<br><br>
+Cette première <span class="proc">métaphore</span> surprend par l'alliance du concret et de l'abstrait : la forêt devient du temps. La deuxième métaphore, déployée des vers 2 à 5, associe les arbres à des <span class="cite">« aiguilles qui percent la terre / déchirent le ciel »</span> : vision violente, presque douloureuse. L'<span class="proc">antithèse</span> <span class="cite">« terre »</span> et <span class="cite">« ciel »</span> crée une impression de disharmonie.<br><br>
+Cependant, l'<span class="proc">allitération en [l]</span> apporte un contrepoint sonore plus doux. Au vers 6, les forêts glissent en nous les <span class="cite">« souvenirs »</span> et <span class="cite">« l'humus de chaque vie »</span>, ramenant la poétesse à son intime, confirmé par le dernier mot de la strophe : <span class="cite">« cœur »</span>. L'espace visuel entre l'adjectif <span class="cite">« légère »</span> et le nom <span class="cite">« une aile »</span> incarne visuellement l'ouverture d'un espace de méditation.
+</div>
+</div>
+
+<div class="mvt-block">
+<div class="mvt-title"><span class="mvt-badge">MVT 2</span> Strophe 2 — Bourrasques intérieures</div>
+<div class="mvt-text">
+La deuxième strophe s'ouvre sur une nouvelle métaphore surprenante : <span class="cite">« greniers peuplés de fantômes »</span> — la mémoire comme grenier hanté. L'<span class="proc">oxymore</span> <span class="cite">« voyages immobiles »</span> caractérise parfaitement le voyage intérieur, l'exploration de soi que permet la méditation en forêt.<br><br>
+Le <span class="proc">paradoxe temporel</span> <span class="cite">« d'une saison déjà passée / qui s'en retourne vers demain »</span> illustre la manière dont la mémoire et l'avenir se confondent dans ces forêts imaginaires. Le passé n'est pas figé ; il se projette en avant.
+</div>
+</div>
+
+<div class="mvt-block">
+<div class="mvt-title"><span class="mvt-badge">MVT 3</span> Str. 3 et 4 — Espoir, renouveau et immensité</div>
+<div class="mvt-text">
+La troisième strophe s'ouvre sur la <span class="proc">personnification</span> <span class="cite">« mes espoirs debout »</span> — les espoirs se tiennent droits, comme les arbres. La <span class="proc">métaphore</span> <span class="cite">« un feu de brindilles / et de mots que les ombres font craquer »</span> associe le poème lui-même à un feu : c'est l'acte poétique qui réchauffe et illumine.<br><br>
+Les deux derniers vers, délibérément isolés, <span class="cite">« mes forêts / sont des nuits très hautes »</span>, créent un effet de verticalité et d'immensité. La brièveté de ces vers finaux, après les strophes plus denses, produit une ouverture vers l'infini. Notons qu'Hélène Dorion n'utilise pas la première personne dans ce texte : l'expérience intime évoquée ici est universelle.
+</div>
+</div>
+</div>
+
+<div class="block">
+<div class="block-label">Conclusion (~30 sec)</div>
+<div class="ccl-box">
+Ce poème inaugural nous fait découvrir les forêts imaginaires d'Hélène Dorion. Les métaphores insolites et paradoxales nous font accéder à son paysage intérieur, à sa méditation sur le temps et le monde. La poétesse y dévoile les thèmes principaux de l'œuvre et invite le lecteur à cheminer dans des forêts aussi violentes que salutaires.<br><br>
+<span class="ouv">Ouverture :</span> On peut faire le lien avec le tableau de Magritte, <em>Le double secret</em> (1927), qui représente lui aussi une intériorité cachée derrière une façade, tout comme ces forêts qui dissimulent un monde intérieur.
+</div>
+</div>
+
+</div>
+</div>
+
+<!-- ========================= T3 ========================= -->
+<div class="texte p" id="t3">
+<div class="texte-header">
+  <div class="texte-num">3</div>
+  <div class="texte-info">
+    <h2>Hélène Dorion — « Il fait un temps de bourrasques et de cicatrices »</h2>
+    <div class="meta">Mes forêts, 2021 · Vers libres · Poème engagé / élégiaque</div>
+  </div>
+  <span class="badge">POÉSIE</span>
+</div>
+<div class="texte-body">
+
+<div class="block">
+<div class="block-label">Introduction (~1 min 30)</div>
+<div class="intro-text">
+<div class="timing">⏱ ~1 min 30</div>
+La poésie a toujours eu une fonction de témoignage et d'engagement face aux crises du monde. Hélène Dorion, poétesse québécoise, publie <em>Mes forêts</em> en 2021 dans un contexte de crise sanitaire mondiale et d'urgence écologique croissante.<br><br>
+Ce poème, extrait du même recueil, se distingue du poème liminaire par son engagement. Il s'agit d'un texte en vers libres non ponctués, à la tonalité élégiaque, c'est-à-dire sur le mode de la plainte et de la déploration. La forêt n'est plus seulement un espace de méditation intérieure ; elle est aussi un écosystème menacé.
+</div>
+<div class="lecture-note">🔊 LECTURE À VOIX HAUTE — Les vers de plus en plus courts vers la fin : accélérer légèrement le rythme</div>
+<div class="prob-box">Comment ce poème exprime-t-il l'urgence d'un monde en crise tout en affirmant la puissance du chant poétique ?</div>
+<div style="margin-top:12px;font-size:13px;color:var(--muted);">
+Nous verrons d'abord comment les premiers vers dressent le tableau d'un monde dévasté, puis comment le chant poétique s'affirme face au chaos, et enfin comment les derniers vers installent une urgence et une menace imminente.
+</div>
+</div>
+
+<div class="block">
+<div class="block-label">Explication linéaire (~8 min)</div>
+
+<div class="mvt-block">
+<div class="mvt-title"><span class="mvt-badge">MVT 1</span> V.1-9 — Un monde dévasté</div>
+<div class="mvt-text">
+Le poème s'ouvre sur l'<span class="proc">anaphore</span> <span class="cite">« il fait un temps de »</span> qui structure le texte comme un bulletin météorologique apocalyptique. Cette formule impersonnelle détourne l'expression ordinaire « il fait beau » pour y substituer un vocabulaire de la destruction : <span class="cite">« bourrasques »</span>, <span class="cite">« cicatrices »</span>, <span class="cite">« séisme »</span>, <span class="cite">« chute »</span>.<br><br>
+La <span class="proc">comparaison</span> <span class="cite">« les promesses tombent / comme des vagues / sur aucune rive »</span> est particulièrement saisissante : les espoirs n'atteignent jamais leur destination. La <span class="proc">personnification</span> <span class="cite">« nos jardins éteints »</span> humanise la nature dévastée. L'enjambement entre <span class="cite">« l'odeur de rose et de lavande »</span> et le vers suivant crée un contraste entre la beauté ancienne et la destruction présente.
+</div>
+</div>
+
+<div class="mvt-block">
+<div class="mvt-title"><span class="mvt-badge">MVT 2</span> V.10-17 — Le chant poétique face au chaos</div>
+<div class="mvt-text">
+La référence aux <span class="cite">« écrans morts »</span> et au <span class="cite">« nord perdu »</span> ancre le poème dans le monde contemporain, numérique et désorienté. Le <span class="cite">« temps de pourquoi / de comment »</span> traduit une époque en perte de sens.<br><br>
+Le vers <span class="cite">« mon chant soulève la poussière »</span> est central : c'est la première fois que la voix de la poétesse s'affirme avec <span class="cite">« mon »</span>. Ce <span class="proc">geste poétique</span>, loin d'être triomphant, est modeste : le chant soulève la poussière, il ne la fait pas disparaître. La <span class="proc">comparaison</span> <span class="cite">« comme un trou béant / dans la maison noire des mots »</span> est troublante : la poésie elle-même est blessée, le langage est atteint par la crise.
+</div>
+</div>
+
+<div class="mvt-block">
+<div class="mvt-title"><span class="mvt-badge">MVT 3</span> V.18-27 — L'urgence et la menace</div>
+<div class="mvt-text">
+La <span class="proc">répétition</span> <span class="cite">« plus encore / et encore / plus encore / plus »</span>, avec les vers qui se réduisent visuellement, reproduit l'essoufflement et l'urgence. La mise en page elle-même devient signifiante : les vers raccourcissent comme si le temps manquait.<br><br>
+<span class="cite">« On ne pourra pas toujours / tout refaire »</span> constitue un avertissement grave et lucide. L'usage du <span class="proc">pronom « on »</span> et surtout du <span class="proc">possessif « nos »</span> dans <span class="cite">« sous nos pas »</span> implique directement le lecteur dans la responsabilité.<br><br>
+Les quatre derniers vers ferment le poème sur une image de menace : <span class="cite">« les forêts tremblent / sous nos pas / la nuit approche »</span>. La forêt, symbole du recueil, est désormais fragilisée par l'homme lui-même. Le poème se clôt dans le silence de la nuit qui approche.
+</div>
+</div>
+</div>
+
+<div class="block">
+<div class="block-label">Conclusion (~30 sec)</div>
+<div class="ccl-box">
+Ce poème mêle engagement écologique et réflexion sur le pouvoir du langage poétique face à la dévastation. La structure même du poème, avec ses vers de plus en plus courts, incarne l'urgence qu'il décrit. La forêt, tour à tour espace d'intimité et écosystème menacé, porte toute la complexité du regard de Dorion sur le monde.<br><br>
+<span class="ouv">Ouverture :</span> On peut rapprocher ce poème des textes militants d'Aimé Césaire dans <em>Cahier d'un retour au pays natal</em>, qui lui aussi mobilise la puissance poétique pour dénoncer une destruction — coloniale pour Césaire, écologique pour Dorion.
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="section-title i">Littérature d'idées — Le regard éloigné</div>
+
+<!-- ========================= T4 ========================= -->
+<div class="texte i" id="t4">
+<div class="texte-header">
+  <div class="texte-num">4</div>
+  <div class="texte-info">
+    <h2>Montesquieu — Lettres persanes, Lettre XCIX</h2>
+    <div class="meta">1721 · Roman épistolaire · Lumières · Rica à Rhédi</div>
+  </div>
+  <span class="badge">IDÉES</span>
+</div>
+<div class="texte-body">
+
+<div class="block">
+<div class="block-label">Introduction (~1 min 30)</div>
+<div class="intro-text">
+<div class="timing">⏱ ~1 min 30</div>
+Au XVIIIe siècle, le mouvement des Lumières cherche à critiquer la société française à travers des formes littéraires variées. L'une des plus efficaces est le regard éloigné : faire observer la France par un étranger naïf, qui pointe les absurdités que les Français ne voient plus. L'orientalisme, très apprécié à cette époque, ajoute au texte un parfum d'ailleurs divertissant.<br><br>
+Montesquieu publie les <em>Lettres persanes</em> en 1721. Dans ce roman épistolaire, deux Persans, Usbek et Rica, voyagent en Europe et écrivent à leurs proches restés en Perse. Dans la lettre 99, Rica écrit à Rhédi, son ami persan qui séjourne à Venise, pour lui parler d'un sujet en apparence léger : les caprices de la mode chez les Françaises. Mais le texte prend progressivement une tournure inattendue.
+</div>
+<div class="lecture-note">🔊 LECTURE À VOIX HAUTE — Texte en prose, paragraphes bien marqués</div>
+<div class="prob-box">Comment, au travers d'une lettre satirique ayant pour sujet les caprices de la mode, Montesquieu dénonce-t-il l'instabilité politique de la société française ?</div>
+<div style="margin-top:12px;font-size:13px;color:var(--muted);">
+Nous verrons d'abord comment le premier paragraphe annonce le sujet de la lettre, puis comment les paragraphes 2 à 4 offrent une tentative comique de décrire la mode française, et enfin comment le cinquième paragraphe opère une bascule vers la critique politique.
+</div>
+</div>
+
+<div class="block">
+<div class="block-label">Explication linéaire (~8 min)</div>
+
+<div class="mvt-block">
+<div class="mvt-title"><span class="mvt-badge">MVT 1</span> §1 — Annonce du sujet</div>
+<div class="mvt-text">
+La première phrase du texte est, comme souvent dans les <em>Lettres persanes</em>, à la fois courte et lapidaire. L'<span class="proc">adjectif « étonnants »</span> est retardé par l'incise <span class="cite">« chez les Français »</span>, ménageant un effet de suspense. Seul le terme <span class="cite">« caprices »</span> au pluriel nous met sur la piste satirique.<br><br>
+La phrase suivante est composée de <span class="proc">trois propositions juxtaposées</span> aux temps variés — imparfait, futur, présent — qui traduit l'instabilité des habitudes vestimentaires. La <span class="proc">question rhétorique</span> <span class="cite">« Que me servirait de te faire une description exacte ? »</span> est immédiatement résolue par Rica lui-même : Rica feint la naïveté mais son ironie est palpable. L'expression <span class="cite">« avant que tu eusses reçu ma lettre, tout serait changé »</span> illustre avec absurdité la frénésie de consommation qui dépasse le temps d'une lettre.
+</div>
+</div>
+
+<div class="mvt-block">
+<div class="mvt-title"><span class="mvt-badge">MVT 2</span> §2-4 — Tentative comique de décrire la mode française</div>
+<div class="mvt-text">
+L'<span class="proc">hyperbole</span> <span class="cite">« antique »</span> pour six mois d'absence produit un effet comique irrésistible. Le fils qui ne reconnaît pas le portrait de sa mère — parce que la mode l'a rendue méconnaissable — est une scène burlesque. Rica imagine avec jubilation les hypothèses du fils : <span class="cite">« quelque Américaine »</span>.<br><br>
+Les <span class="proc">descriptions géométriques</span> des coiffures sont caricaturales : <span class="cite">« la hauteur immense mettait le visage d'une femme au milieu d'elle-même »</span> — image visuelle absurde. Ou encore <span class="cite">« les talons faisaient un piédestal qui les tenait en l'air »</span>.<br><br>
+La <span class="proc">négation totale</span> <span class="cite">« autrefois les femmes avaient de la taille et des dents ; aujourd'hui il n'en est pas question »</span> est d'une absurdité délibérée : comme si la mode avait supprimé des attributs génétiques. Les <span class="proc">connecteurs temporels</span> désordonnés — quelquefois, autrefois, aujourd'hui, le lendemain — créent un vertige face à l'inconstance.
+</div>
+</div>
+
+<div class="mvt-block">
+<div class="mvt-title"><span class="mvt-badge">MVT 3</span> §5 — Critique de l'instabilité politique</div>
+<div class="mvt-text">
+Le texte se clôt sur un virage brutal. Rica reprend le terme <span class="cite">« changeante nation »</span> et le décline en <span class="cite">« les Français changent de mœurs selon l'âge de leur roi »</span>. En 1717, date de la lettre, Louis XIV vient de mourir et Louis XV n'a que 7 ans : Montesquieu épingle le vide du pouvoir.<br><br>
+L'<span class="proc">anadiplose</span> <span class="cite">« à la cour, la cour à la ville, la ville aux provinces »</span> crée un effet de cascade vertigineux, illustrant l'influence totale du monarque sur ses sujets. Les verbes <span class="proc">« imprime »</span> et <span class="proc">« donne la forme »</span> soulignent la vision du roi comme un moule qui fabrique des sujets identiques. La <span class="proc">métaphore</span> <span class="cite">« L'âme du souverain est un moule qui donne la forme à toutes les autres »</span> est une critique directe du pouvoir absolu sans équilibre.
+</div>
+</div>
+</div>
+
+<div class="block">
+<div class="block-label">Conclusion (~30 sec)</div>
+<div class="ccl-box">
+Cette lettre est une satire sociale brillante qui glisse imperceptiblement du comique vers la critique politique. Montesquieu réussit à faire rire ses contemporains d'eux-mêmes tout en épinglant les failles d'un État centralisé sans contre-pouvoirs. Celui qui écrira <em>L'Esprit des lois</em> en 1748 pose ici en germe ses réflexions sur les conditions d'un gouvernement équilibré.<br><br>
+<span class="ouv">Ouverture :</span> Dans <em>Le Deuxième Sexe</em>, Simone de Beauvoir traite du même sujet mais le ton change radicalement : la mode n'est plus seulement ridicule, elle est criminelle et condamne les femmes à une vie de servitude.
+</div>
+</div>
+
+</div>
+</div>
+
+<!-- ========================= T5 ========================= -->
+<div class="texte i" id="t5">
+<div class="texte-header">
+  <div class="texte-num">5</div>
+  <div class="texte-info">
+    <h2>Françoise de Graffigny — Lettres d'une Péruvienne, Lettre I (Incipit)</h2>
+    <div class="meta">1747 · Roman épistolaire · Lumières · Zilia à Aza</div>
+  </div>
+  <span class="badge">IDÉES</span>
+</div>
+<div class="texte-body">
+
+<div class="block">
+<div class="block-label">Introduction (~1 min 30)</div>
+<div class="intro-text">
+<div class="timing">⏱ ~1 min 30</div>
+Au XVIIIe siècle, le roman épistolaire permet de plonger le lecteur dans les émotions et les pensées d'un personnage. Les Lumières s'interrogent aussi sur la violence, l'humanité et la barbarie coloniale à travers la fiction. De nombreux récits mettent en scène la rencontre entre Européens et peuples colonisés, souvent pour la critiquer.<br><br>
+Françoise de Graffigny publie <em>Lettres d'une Péruvienne</em> en 1747. Le roman raconte l'histoire de Zilia, jeune Inca fiancée à Aza, capturée lors de l'attaque espagnole contre la Ville du Soleil. La lettre I constitue l'incipit : c'est la première fois que le lecteur entend la voix de Zilia. Dans cette lettre, Zilia exprime son désespoir amoureux, rappelle brièvement l'attaque et décrit la cruauté de ses ravisseurs.
+</div>
+<div class="lecture-note">🔊 LECTURE À VOIX HAUTE — Texte lyrique et pathétique : laisser exprimer la douleur dans la voix</div>
+<div class="prob-box">Comment cet incipit place-t-il immédiatement le lecteur au cœur d'un drame intime et politique ?</div>
+<div style="margin-top:12px;font-size:13px;color:var(--muted);">
+Nous verrons d'abord une plainte désespérée dans les premières lignes, puis l'évocation d'un événement effroyable, et enfin le portrait de ravisseurs dépourvus d'humanité.
+</div>
+</div>
+
+<div class="block">
+<div class="block-label">Explication linéaire (~8 min)</div>
+
+<div class="mvt-block">
+<div class="mvt-title"><span class="mvt-badge">MVT 1</span> L.1-14 — Une plainte désespérée</div>
+<div class="mvt-text">
+L'<span class="proc">apostrophe lyrique</span> <span class="cite">« Aza ! Mon cher Aza ! »</span> ouvre le texte comme un cri. La répétition du prénom, l'exclamation, le possessif <span class="cite">« mon »</span> et l'adjectif <span class="cite">« cher »</span> plongent immédiatement le lecteur dans l'intimité douloureuse de Zilia.<br><br>
+La <span class="proc">comparaison</span> <span class="cite">« tels une vapeur du matin, s'exhalent et sont dissipés »</span> traduit la vanité des cris de Zilia : ses paroles se perdent dans l'air. L'<span class="proc">anaphore</span> <span class="cite">« en vain »</span> répétée exprime l'impuissance totale. La <span class="proc">gradation ternaire</span> <span class="cite">« ma douleur, mes craintes, mon désespoir »</span> construit le <span class="proc">registre pathétique</span> : le lecteur est immédiatement saisi par l'émotion.<br><br>
+La construction paradoxale <span class="cite">« la ville du Soleil, livrée à la fureur d'une nation barbare, devrait faire couler mes larmes, mais... »</span> révèle que la destruction politique est subordonnée à la douleur amoureuse : tout son être est tourné vers Aza.
+</div>
+</div>
+
+<div class="mvt-block">
+<div class="mvt-title"><span class="mvt-badge">MVT 2</span> L.15-23 — L'évocation d'un événement effroyable</div>
+<div class="mvt-text">
+La longue phrase qui court de <span class="cite">« Depuis le moment terrible »</span> à <span class="cite">« sans pouvoir en découvrir la cause »</span> reproduit par sa longueur même l'accumulation traumatique. Les <span class="proc">participes passés accumulés</span> <span class="cite">« retenue », « privée », « ignorant »</span> donnent l'image d'un corps réduit à l'inaction, d'une liberté confisquée.<br><br>
+La <span class="proc">métaphore</span> <span class="cite">« plongée dans un abîme d'obscurité »</span> et la <span class="proc">comparaison</span> <span class="cite">« mes jours sont semblables aux nuits les plus effrayantes »</span> traduisent la désorientation totale de Zilia : privée de communication et de langue, elle ne distingue plus le jour de la nuit.
+</div>
+</div>
+
+<div class="mvt-block">
+<div class="mvt-title"><span class="mvt-badge">MVT 3</span> L.24-fin — Des ravisseurs dépourvus d'humanité</div>
+<div class="mvt-text">
+Ici s'opère un <span class="proc">renversement du regard</span> caractéristique des Lumières : ce sont les Européens qui sont désignés comme <span class="cite">« sauvages impies »</span>, <span class="cite">« hommes féroces »</span>, <span class="cite">« barbares »</span>. Le regard éloigné, utilisé par Montesquieu pour la mode, est ici retourné contre la barbarie coloniale.<br><br>
+La <span class="proc">question rhétorique</span> <span class="cite">« Quel est le peuple assez féroce pour n'être point ému aux signes de la douleur ? »</span> est une dénonciation universelle de l'inhumanité. Le texte se clôt sur un retour à l'intime : les questions pressantes adressées à Aza rappellent que Zilia, au milieu de ce désastre politique, reste avant tout une femme amoureuse qui attend des nouvelles de son fiancé.
+</div>
+</div>
+</div>
+
+<div class="block">
+<div class="block-label">Conclusion (~30 sec)</div>
+<div class="ccl-box">
+Ce passage inaugural des <em>Lettres d'une Péruvienne</em> mêle étroitement la plainte amoureuse, le traumatisme et la dénonciation coloniale. L'incipit prend la forme d'un cri qui combine pathétique, lyrisme et engagement. Le lecteur est placé d'emblée dans la position de confident d'une héroïne injustement opprimée.<br><br>
+<span class="ouv">Ouverture :</span> On peut rapprocher cette lettre du dénouement (texte 6) : Zilia, qui crie sa douleur ici, choisira à la fin du roman la liberté intellectuelle et la solitude, transformant sa souffrance en force émancipatrice.
+</div>
+</div>
+
+</div>
+</div>
+
+<!-- ========================= T6 ========================= -->
+<div class="texte i" id="t6">
+<div class="texte-header">
+  <div class="texte-num">6</div>
+  <div class="texte-info">
+    <h2>Françoise de Graffigny — Lettres d'une Péruvienne, Dénouement (Lettre 41)</h2>
+    <div class="meta">1747 · Roman épistolaire · Zilia à Déterville · Dénouement controversé</div>
+  </div>
+  <span class="badge">IDÉES</span>
+</div>
+<div class="texte-body">
+
+<div class="block">
+<div class="block-label">Introduction (~1 min 30)</div>
+<div class="intro-text">
+<div class="timing">⏱ ~1 min 30</div>
+Après la sortie du roman, le dénouement des <em>Lettres d'une Péruvienne</em> a suscité des réactions diverses : si l'œuvre rencontre un grand succès, le critique Pierre Clément regrette que l'infidélité d'Aza n'ait pas eu de conséquences plus dramatiques. Aujourd'hui, on peut au contraire admirer la modernité de ce dénouement qui propose un véritable éloge de la résilience et de l'émancipation.<br><br>
+Dans la lettre 38, les lecteurs ont appris qu'Aza a été infidèle et qu'il est sur le point de s'engager avec une jeune Espagnole. Dans cette dernière lettre, Zilia répond à Déterville, qui est épris d'elle, et lui présente ses projets d'avenir dans lesquels il n'apparaît qu'en tant qu'ami.
+</div>
+<div class="lecture-note">🔊 LECTURE À VOIX HAUTE — Texte argumentatif : voix posée, assurée, différente du cri de la lettre I</div>
+<div class="prob-box">Comment cette fin consacre-t-elle l'émancipation intellectuelle complète de l'héroïne ?</div>
+<div style="margin-top:12px;font-size:13px;color:var(--muted);">
+Nous verrons d'abord la condamnation de l'amour-passion au profit d'une déclaration d'amitié, puis la promesse d'un quotidien orienté par l'amitié, et enfin une réflexion philosophique sur les conditions d'une vie heureuse.
+</div>
+</div>
+
+<div class="block">
+<div class="block-label">Explication linéaire (~8 min)</div>
+
+<div class="mvt-block">
+<div class="mvt-title"><span class="mvt-badge">MVT 1</span> L.19-39 — Condamnation de l'amour-passion</div>
+<div class="mvt-text">
+La <span class="proc">métaphore</span> <span class="cite">« faire prendre à mon cœur de nouvelles chaînes »</span> est centrale : l'amour est une chaîne, une forme d'esclavage. Cette métaphore de la fin'amor — l'amant captif de sa dame — est ici retournée contre l'amour lui-même. Zilia refuse de se laisser enchaîner à nouveau.<br><br>
+Le <span class="proc">champ lexical de la trahison</span> — <span class="cite">« trahie »</span>, <span class="cite">« ingrat »</span>, <span class="cite">« cruel »</span> — dresse le portrait d'Aza. Mais l'<span class="proc">antithèse</span> <span class="cite">« fidèle à moi-même »</span> montre que Zilia ne se définit plus par rapport à lui : elle se définit par elle-même. Le <span class="proc">paradoxe</span> <span class="cite">« je puis guérir de ma passion, mais je n'en aurai jamais que pour lui »</span> traduit la complexité de ses sentiments.<br><br>
+Le <span class="proc">rythme ternaire</span> de ses promesses — <span class="cite">« Je vous les promets ; j'y serai fidèle ; vous jouirez au même degré de ma confiance »</span> — adopte le ton solennel d'un engagement véritable. Le <span class="proc">futur simple</span> ne laisse pas place au doute. L'<span class="proc">antithèse structurante</span> amour/amitié traverse tout le passage.
+</div>
+</div>
+
+<div class="mvt-block">
+<div class="mvt-title"><span class="mvt-badge">MVT 2</span> L.40-52 — Un quotidien orienté par l'amitié</div>
+<div class="mvt-text">
+Zilia déplace le <span class="proc">champ lexical du plaisir</span> — habituellement associé à l'amour — vers l'amitié : <span class="cite">« vous goûterez le plaisir de la supériorité »</span>, <span class="cite">« vous jouirez de votre ouvrage »</span>. La <span class="proc">réciprocité</span> est au cœur de cette relation : les <span class="proc">parallélismes de construction</span> <span class="cite">« Vous me donnerez… je le reprendrai… Vous ornerez… je tâcherai »</span> montrent une relation d'égal à égal.<br><br>
+La relation est promise à une véritable émulation intellectuelle : sciences, arts, vertus. La <span class="proc">question rhétorique</span> <span class="cite">« Que nous resterait-il à désirer ? »</span> suggère que cette amitié apportera une plénitude comparable à l'amour.
+</div>
+</div>
+
+<div class="mvt-block">
+<div class="mvt-title"><span class="mvt-badge">MVT 3</span> L.53-61 — Réflexion philosophique sur le bonheur</div>
+<div class="mvt-text">
+La <span class="proc">négation exceptive</span> <span class="cite">« elle ne devient jamais dangereuse que par l'oisiveté »</span> répond aux craintes supposées de Déterville sur la solitude. Zilia se dit <span class="cite">« toujours occupée »</span> : elle observe la nature, acquiert des connaissances, fait de la philosophie.<br><br>
+Le dernier paragraphe est le plus philosophique du texte. L'<span class="proc">italique</span> <span class="cite">« je suis, je vis, j'existe »</span> détache visuellement un fragment essentiel, rapprochant la lettre d'un traité philosophique. Ce <span class="proc">rythme ternaire</span> exprime la conscience d'exister, le <span class="cite">« plaisir d'être »</span>, que Zilia oppose à la recherche du bonheur par le divertissement ou l'amour.<br><br>
+Les <span class="proc">trois subordonnées conditionnelles</span> <span class="cite">« si l'on s'en souvenait, si l'on en jouissait, si l'on en connaissait le prix »</span> soulignent que ce bonheur élémentaire est oublié par la plupart des humains, désignés comme des <span class="cite">« aveugles »</span>.
+</div>
+</div>
+</div>
+
+<div class="block">
+<div class="block-label">Conclusion (~30 sec)</div>
+<div class="ccl-box">
+Zilia choisit la liberté, l'amitié et la connaissance plutôt que l'amour. Ce dénouement est une émancipation radicale pour l'époque : une femme seule, sans mari, sans amant, heureuse et intellectuellement épanouie. Graffigny propose un modèle féminin d'une modernité saisissante.<br><br>
+<span class="ouv">Ouverture :</span> Dans <em>Une chambre à soi</em>, Virginia Woolf défend l'idée que les femmes ont besoin d'une indépendance matérielle et d'un espace à elles pour créer et penser librement — exactement ce que Zilia revendique deux siècles plus tôt.
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="section-title n">Roman — La célébration du monde</div>
+
+<!-- ========================= T7 ========================= -->
+<div class="texte n" id="t7">
+<div class="texte-header">
+  <div class="texte-num">7</div>
+  <div class="texte-info">
+    <h2>Émile Zola — La Faute de l'Abbé Mouret</h2>
+    <div class="meta">1875 · Roman · Les Rougon-Macquart · Réécriture de la Genèse</div>
+  </div>
+  <span class="badge">ROMAN</span>
+</div>
+<div class="texte-body">
+
+<div class="block">
+<div class="block-label">Introduction (~1 min 30)</div>
+<div class="intro-text">
+<div class="timing">⏱ ~1 min 30</div>
+Émile Zola entreprend en 1870 un grand projet romanesque intitulé <em>Les Rougon-Macquart</em>, fresque naturaliste de vingt romans qui décrit la société française sous le Second Empire. Son objectif : observer l'influence de l'hérédité et du milieu sur une famille. <em>La Faute de l'Abbé Mouret</em>, roman de 1875, est assez singulier dans cette saga : on peut y lire une réécriture de la Genèse biblique autant qu'une critique de la religion catholique.<br><br>
+Serge, l'abbé Mouret, tombe malade après une nuit d'extase mystique et perd la mémoire. Il est soigné par Albine dans le Paradou, un jardin extraordinaire à l'abandon. Dans cet extrait, Serge fait ses cinq premiers pas hors de la maison et contemple le lever du soleil.
+</div>
+<div class="lecture-note">🔊 LECTURE À VOIX HAUTE — Texte lyrique et épique : voix ample, montante</div>
+<div class="prob-box">Comment Zola montre-t-il la résurrection d'un homme qui reprend possession de ses sens et s'ouvre à la vie ?</div>
+<div style="margin-top:12px;font-size:13px;color:var(--muted);">
+Nous verrons d'abord la renaissance de Serge qui reprend possession de ses sens, puis comment il apparaît transfiguré aux yeux d'Albine.
+</div>
+</div>
+
+<div class="block">
+<div class="block-label">Explication linéaire (~8 min)</div>
+
+<div class="mvt-block">
+<div class="mvt-title"><span class="mvt-badge">MVT 1</span> L.1-11 — La (re)naissance de Serge</div>
+<div class="mvt-text">
+La phrase inaugurale <span class="cite">« Serge naquit dans l'enfance du matin »</span> au <span class="proc">passé simple</span> est remarquable : elle porte à la fois la naissance et la métaphore — le matin est aussi dans son enfance. La <span class="proc">répétition</span> de l'imparfait <span class="cite">« il naissait »</span>, qui succède au passé simple, traduit une naissance progressive, comme si l'éveil prenait du temps.<br><br>
+Le <span class="proc">paradoxe</span> d'une naissance à vingt-cinq ans frappe immédiatement : <span class="cite">« Il naissait à vingt-cinq ans, les sens brusquement ouverts »</span>. La <span class="proc">convocation des cinq sens</span> est méthodique : la vue — <span class="cite">« rayons du soleil »</span>, le toucher — <span class="cite">« haleines qui lui passaient sur les joues »</span>, l'odorat, l'ouïe. La <span class="proc">gradation</span> <span class="cite">« jusqu'aux brins d'herbe, jusqu'aux pierres des allées, jusqu'aux haleines »</span> descend du grand vers l'infiniment petit pour montrer que Serge perçoit chaque détail avec une acuité nouvelle.<br><br>
+L'<span class="proc">anaphore</span> <span class="cite">« C'était à lui »</span> traduit une prise de possession joyeuse : Serge s'approprie le monde. Le geste de fermer et rouvrir les yeux pour <span class="cite">« avoir l'éblouissement d'un second réveil »</span> est celui d'un être qui veut savourer chaque instant de cette résurrection.
+</div>
+</div>
+
+<div class="mvt-block">
+<div class="mvt-title"><span class="mvt-badge">MVT 2</span> L.12-fin — Un homme transfiguré aux yeux d'Albine</div>
+<div class="mvt-text">
+Le regard se renverse : c'est maintenant Albine qui contemple Serge. Son exclamation <span class="cite">« Comme tu es beau ! »</span>, répétée deux fois en <span class="proc">anaphore</span>, marque le choc de la révélation : <span class="cite">« Jamais je ne t'avais vu »</span>. Serge est devenu un autre.<br><br>
+Le <span class="proc">portrait laudatif</span> qui suit est rédigé comme celui d'un saint ou d'un dieu. La <span class="proc">gradation</span> <span class="cite">« La santé, la force, la puissance »</span> élève Serge au statut de figure divine. Albine <span class="cite">« lentement accroupie devant lui »</span> est dans une posture d'adoration.<br><br>
+La dernière réplique de Serge, <span class="cite">« Que la lumière est bonne ! »</span>, est un écho direct à la Genèse biblique : <span class="proc">« Dieu vit que la lumière était bonne »</span>. Serge rejoue la création du monde. L'expression <span class="cite">« cette parole était une vibration même du soleil »</span> fusionne définitivement l'homme et la nature : Serge est devenu le soleil.
+</div>
+</div>
+</div>
+
+<div class="block">
+<div class="block-label">Conclusion (~30 sec)</div>
+<div class="ccl-box">
+Cet extrait présente une résurrection sensorielle qui est aussi une réécriture de la Genèse : Serge est un nouvel Adam dans le Paradou-Éden, Albine une nouvelle Ève qui l'admire. Zola naturaliste utilise le cadre mythique pour explorer le rapport de l'homme à la nature et aux sens.<br><br>
+<span class="ouv">Ouverture :</span> Ce texte peut être mis en lien avec Rousseau et <em>Les Rêveries du promeneur solitaire</em>, dans lesquelles la nature est également un espace de ressourcement et de renaissance de l'être.
+</div>
+</div>
+
+</div>
+</div>
+
+<!-- ========================= T8 ========================= -->
+<div class="texte n" id="t8">
+<div class="texte-header">
+  <div class="texte-num">8</div>
+  <div class="texte-info">
+    <h2>Colette — Sido</h2>
+    <div class="meta">1929 · Roman autobiographique · Chapitre sur la mère · Saint-Sauveur-en-Puisaye</div>
+  </div>
+  <span class="badge">ROMAN</span>
+</div>
+<div class="texte-body">
+
+<div class="block">
+<div class="block-label">Introduction (~1 min 30)</div>
+<div class="intro-text">
+<div class="timing">⏱ ~1 min 30</div>
+Colette, de son vrai nom Sidonie-Gabrielle Colette, est l'une des grandes figures de la littérature française du XXe siècle. <em>Sido</em> est une œuvre autobiographique écrite en 1929 dans laquelle elle évoque sa famille et la maison de son enfance à Saint-Sauveur-en-Puisaye, dans l'Yonne. Le premier chapitre est entièrement consacré à sa mère, Sidonie Colette, surnommée « Sido » par son époux. C'était une femme peu conformiste, qui a transmis à sa fille son amour de la nature, des animaux et de la littérature.<br><br>
+Dans cet extrait, l'autrice relate un souvenir précis de son enfance : une tempête de neige. Le texte oscille entre la nostalgie d'un passé magnifié et la célébration du personnage maternel.
+</div>
+<div class="lecture-note">🔊 LECTURE À VOIX HAUTE — Texte nostalgique et lyrique : voix chaude et douce</div>
+<div class="prob-box">Comment perçoit-on la nostalgie de l'autrice et l'héritage immatériel laissé par sa mère, c'est-à-dire la capacité à s'émerveiller du spectacle de la nature ?</div>
+<div style="margin-top:12px;font-size:13px;color:var(--muted);">
+Nous verrons d'abord l'évocation des saisons de l'enfance, puis nous analyserons la tempête et le comportement de Sido face à elle, et enfin nous nous arrêterons sur le moment suspendu de la contemplation des flocons.
+</div>
+</div>
+
+<div class="block">
+<div class="block-label">Explication linéaire (~8 min)</div>
+
+<div class="mvt-block">
+<div class="mvt-title"><span class="mvt-badge">MVT 1</span> L.1-5 — Évocation des saisons de l'enfance</div>
+<div class="mvt-text">
+La formule d'ouverture <span class="cite">« Il y avait dans ce temps-là »</span>, à l'<span class="proc">imparfait</span>, est une formule de conte — elle installe d'emblée la nostalgie et la distance temporelle. Les <span class="proc">hyperboles</span> <span class="cite">« de grands hivers, de brûlants étés »</span> traduisent la perception magnifiée de l'enfance : tout est plus intense dans le souvenir.<br><br>
+La <span class="proc">richesse chromatique</span> du passage — ocreuse, écarlate, enflammée, blanc pur, ardoisées — fait du texte une véritable peinture sensorielle. La <span class="proc">négation restrictive</span> <span class="cite">« Aucun été, sauf ceux de mon enfance »</span> sacralise le passé et installe le sentiment de perte irréversible qui est au cœur de la nostalgie.
+</div>
+</div>
+
+<div class="mvt-block">
+<div class="mvt-title"><span class="mvt-badge">MVT 2</span> L.5-14 — La tempête</div>
+<div class="mvt-text">
+La transition de la neige calme vers la tempête est marquée : <span class="cite">« la calme et verticale chute de neige devenait oblique »</span>. La <span class="proc">métaphore filée maritime</span> transforme la maison en navire : <span class="cite">« ronflement de mer lointaine »</span>, <span class="cite">« Mousse exalté du navire natal »</span>. L'enfant est le mousse enthousiaste, la maison le bateau battu par la tempête.<br><br>
+Sido est <span class="proc">personnifiée</span> avec <span class="cite">« ses antennes »</span> : elle perçoit le changement avant tout le monde, quasi animale dans son rapport à la nature. Elle <span class="cite">« goûtait le temps »</span> — le verbe gustatif est inattendu et révèle une relation sensorielle et intime à la météo.<br><br>
+Le rythme s'accélère avec les <span class="proc">impératifs</span> lancés comme des ordres de bord : <span class="cite">« Cours ! Ferme les lucarnes ! »</span>. L'enfant joue à avoir peur : <span class="cite">« Je tâchais de trembler, de croire à la fin du monde »</span> — le verbe <span class="proc">« tâchais »</span> trahit que la terreur est feinte, que c'est un jeu délicieux.
+</div>
+</div>
+
+<div class="mvt-block">
+<div class="mvt-title"><span class="mvt-badge">MVT 3</span> Fin — Contempler les flocons, un instant suspendu</div>
+<div class="mvt-text">
+Le <span class="proc">contraste</span> final est saisissant : <span class="cite">« dans le pire du fracas »</span>, au lieu de chercher à se protéger, Sido s'émerveille. Elle place sa loupe sur la neige et compte les cristaux ramifiés. Cette image arrête le temps, suspend la tempête.<br><br>
+La <span class="proc">personnification</span> finale <span class="cite">« aux mains mêmes de l'Ouest rué sur notre jardin »</span> donne au vent une présence presque physique. Sido cueille la neige dans les mains du vent : geste poétique et scientifique à la fois. C'est cet héritage — la capacité à transformer le chaos en émerveillement — que Colette a reçu de sa mère et qu'elle transmet à son tour dans ses écrits.
+</div>
+</div>
+</div>
+
+<div class="block">
+<div class="block-label">Conclusion (~30 sec)</div>
+<div class="ccl-box">
+Écriture sensorielle qui magnifie l'enfance et le personnage maternel. L'héritage de Sido, c'est cette capacité à s'émerveiller devant la nature, à transformer une tempête en spectacle scientifique et poétique. Colette prolonge cet héritage dans toute son œuvre : on le retrouve dans <em>Les Vrilles de la vigne</em>, notamment dans la nouvelle Nonoche où les miaulements d'un vieux matou deviennent un chant d'amour lyrique.<br><br>
+<span class="ouv">Ouverture :</span> On peut évoquer Annie Ernaux, dont l'écriture autobiographique explore elle aussi la transmission familiale, mais à travers la honte sociale plutôt que l'émerveillement.
+</div>
+</div>
+
+</div>
+</div>
+
+<!-- ========================= T9 ========================= -->
+<div class="texte n" id="t9">
+<div class="texte-header">
+  <div class="texte-num">9</div>
+  <div class="texte-info">
+    <h2>Colette — « Nonoche », Les Vrilles de la vigne</h2>
+    <div class="meta">1908 · Nouvelle · Kaléidoscope de nouvelles · Dédiée à Willy</div>
+  </div>
+  <span class="badge">ROMAN</span>
+</div>
+<div class="texte-body">
+
+<div class="block">
+<div class="block-label">Introduction (~1 min 30)</div>
+<div class="intro-text">
+<div class="timing">⏱ ~1 min 30</div>
+Colette publie <em>Les Vrilles de la vigne</em> en 1908, un recueil qui constitue une sorte de kaléidoscope de nouvelles dont plusieurs mettent en scène des animaux. La nouvelle « Nonoche » est dédiée à Willy, son premier mari, écrivain mondain qui l'a longtemps contrôlée et a publié ses premiers romans sous son propre nom.<br><br>
+Dans cette nouvelle, une chatte — Nonoche — dont le chaton est déjà grand s'ennuie sur le perron un soir, regarde tomber la nuit, et entend l'Appel du Matou. Dans cet extrait, Colette célèbre les chats qu'elle personnifie, la nature, et à travers ces lignes, c'est son propre désir d'émancipation que l'on perçoit.
+</div>
+<div class="lecture-note">🔊 LECTURE À VOIX HAUTE — Rythme lent et contemplatif pour le début, rupture plus vive à la fin</div>
+<div class="prob-box">Comment, à travers cet extrait, l'autrice dévoile-t-elle son désir de liberté tout en célébrant la nature et les chats ?</div>
+<div style="margin-top:12px;font-size:13px;color:var(--muted);">
+Nous verrons d'abord le début de soirée paisible, le désœuvrement et la contemplation de Nonoche, puis l'arrivée de l'élément perturbateur.
+</div>
+</div>
+
+<div class="block">
+<div class="block-label">Explication linéaire (~8 min)</div>
+
+<div class="mvt-block">
+<div class="mvt-title"><span class="mvt-badge">MVT 1</span> L.1-14 — Soirée paisible, désœuvrement et contemplation</div>
+<div class="mvt-text">
+Le texte s'ouvre sur la <span class="proc">personnification constante</span> de Nonoche : elle <span class="cite">« soupire »</span>, <span class="cite">« bâille »</span>, <span class="cite">« fronce les sourcils »</span>, <span class="cite">« menace du regard »</span>. Ces comportements humains attribués à la chatte instaurent une connivence entre l'animal et le lecteur. Colette se fait chat.<br><br>
+Le lecteur perçoit le monde par les <span class="proc">sens de Nonoche</span> : la <span class="cite">« tiédeur du perron »</span> sous ses pattes, le <span class="cite">« grésil »</span> de la libellule dans l'air. C'est une écriture sensorielle qui place le lecteur dans la peau du chat.<br><br>
+La <span class="proc">description impressionniste</span> du crépuscule — <span class="cite">« les montagnes bleuissent »</span>, le brouillard qui <span class="cite">« s'effile, se balance et s'étale »</span> — évoque une aquarelle de fin de jour. Les verbes pronominaux traduisent le mouvement lent et mélancolique de la lumière qui décline.<br><br>
+<span class="cite">« Mélancolie agacée, ce vide et vague désir »</span> : ces mots appartiennent au registre humain, pas au registre animal. Colette projette ses propres sentiments sur Nonoche. Ce <span class="cite">« vague désir »</span> de quelque chose d'indéfini est le sentiment même que l'on prête à la poétesse enfermée dans son mariage avec Willy.
+</div>
+</div>
+
+<div class="mvt-block">
+<div class="mvt-title"><span class="mvt-badge">MVT 2</span> L.15-fin — L'arrivée de l'élément perturbateur</div>
+<div class="mvt-text">
+La <span class="proc">rupture</span> est marquée par le connecteur <span class="cite">« Mais »</span> et par la formulation <span class="cite">« quelque chose arrête court son geste »</span>. Le corps de Nonoche réagit avant même qu'elle ait identifié ce qui l'attire : <span class="cite">« quelque chose oriente en avant ses oreilles, noircit le vert acide de ses prunelles »</span>. Cette <span class="proc">transformation physique</span> traduit l'instinct, la pulsion.<br><br>
+La phrase finale est un chef-d'œuvre de construction : longue, suspendue, elle accumule des subordonnées avant la révélation finale. Les <span class="proc">quatre adjectifs</span> <span class="cite">« traînant, sauvage, musical, insidieux »</span> séparés par un tiret créent un effet de suspense dramatique, comme si la voix du matou arrivait de loin, progressivement. Et la phrase se clôt sur <span class="cite">« l'Appel du Matou »</span> en majuscules — révélation, comme s'il s'agissait d'un titre, d'un destin.
+</div>
+</div>
+</div>
+
+<div class="block">
+<div class="block-label">Conclusion (~30 sec)</div>
+<div class="ccl-box">
+Colette célèbre ici les chats, la nature et, à travers Nonoche, son propre désir de liberté. On peut noter le lien entre le matou-tentateur et Willy, qui lui aussi a exercé sur elle une forme d'attraction irrésistible et dangereuse. La suite du texte, non étudiée, transforme les miaulements rauques du vieux chat en un chant lyrique et sensuel : c'est là tout le génie de Colette, capable de se faire chat pour nous faire entendre la beauté de ce désir.<br><br>
+<span class="ouv">Ouverture :</span> On peut rapprocher ce texte de <em>Sido</em> : dans les deux cas, Colette célèbre la nature et les animaux avec la même précision sensorielle héritée de sa mère.
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="section-title t">Théâtre — Les jeux du cœur et de la parole</div>
+
+<!-- ========================= T10 ========================= -->
+<div class="texte t" id="t10">
+<div class="texte-header">
+  <div class="texte-num">10</div>
+  <div class="texte-info">
+    <h2>Musset — On ne badine pas avec l'amour, Acte I, scène 2</h2>
+    <div class="meta">1834 · Drame romantique · Scène de retrouvailles</div>
+  </div>
+  <span class="badge">THÉÂTRE</span>
+</div>
+<div class="texte-body">
+
+<div class="block">
+<div class="block-label">Introduction (~1 min 30)</div>
+<div class="intro-text">
+<div class="timing">⏱ ~1 min 30</div>
+Alfred de Musset est l'un des grands représentants du romantisme français. Il publie <em>On ne badine pas avec l'amour</em> en 1834 dans la <em>Revue des Deux Mondes</em>. Cette pièce, d'abord conçue comme un proverbe dramatique, est considérée comme un drame romantique en raison de son mélange de registres : le comique et le tragique coexistent jusqu'au dénouement fatal.<br><br>
+Dans cette scène, Camille et Perdican, cousins, se retrouvent après de longues années de séparation. Perdican revient de ses études à Paris ; Camille sort du couvent. Le Baron, leur père commun, souhaite les marier. Mais la première rencontre révèle immédiatement des tensions.
+</div>
+<div class="lecture-note">🔊 LECTURE À VOIX HAUTE — Différencier les voix : enthousiasme de Perdican, froideur de Camille, maladresse du Baron</div>
+<div class="prob-box">Comment cette scène de retrouvailles met-elle en place le conflit entre spontanéité et retenue qui traverse toute la pièce ?</div>
+<div style="margin-top:12px;font-size:13px;color:var(--muted);">
+Nous verrons d'abord les retrouvailles contrastées des deux cousins, puis le refus du baiser et la joute verbale sur l'amour et l'amitié, et enfin les objets symboliques qui révèlent deux visions du monde opposées.
+</div>
+</div>
+
+<div class="block">
+<div class="block-label">Explication linéaire (~8 min)</div>
+
+<div class="mvt-block">
+<div class="mvt-title"><span class="mvt-badge">MVT 1</span> Retrouvailles contrastées</div>
+<div class="mvt-text">
+Le <span class="proc">contraste</span> entre les deux personnages est immédiatement frappant. Perdican use de l'<span class="proc">exclamation</span>, du <span class="proc">superlatif</span> <span class="cite">« ma sœur bien-aimée »</span>, du <span class="proc">tutoiement</span> affectueux : <span class="cite">« Comme te voilà grande, Camille ! Et belle comme le jour ! »</span>. Tout traduit la spontanéité, la joie, l'élan romantique.<br><br>
+À l'inverse, Camille répond par une formule de politesse froide et distante : <span class="cite">« Mon père et mon cousin, je vous salue »</span>. Le <span class="proc">vouvoiement</span>, l'absence d'épithètes affectueuses, la formule quasi-administrative : tout signale la retenue, la méfiance, l'influence du couvent. Le Baron, entremetteur maladroit, tente de forcer la rencontre mais ne fait qu'amplifier le malaise.
+</div>
+</div>
+
+<div class="mvt-block">
+<div class="mvt-title"><span class="mvt-badge">MVT 2</span> Le refus du baiser — joute verbale</div>
+<div class="mvt-text">
+Le refus du baiser — <span class="cite">« Excusez-moi »</span> — crée la première tension dramatique de la scène. Cette formule de politesse convenue, dans ce contexte de retrouvailles familiales, est un affront discret mais réel.<br><br>
+S'ensuit un échange de <span class="proc">maximes</span> : Perdican affirme que <span class="cite">« l'amour peut voler un baiser, mais non pas l'amitié »</span> — il joue sur la distinction amour/amitié. Camille riposte : <span class="cite">« L'amitié ni l'amour ne doivent recevoir que ce qu'ils peuvent rendre »</span>. Cette sentence révèle sa méfiance fondamentale, forgée au couvent : ne rien donner que l'on ne soit sûr de recevoir en retour. La <span class="proc">joute verbale</span> annonce les futurs affrontements de la pièce.
+</div>
+</div>
+
+<div class="mvt-block">
+<div class="mvt-title"><span class="mvt-badge">MVT 3</span> Les objets symboliques — deux visions du monde</div>
+<div class="mvt-text">
+Les deux cousins se tournent chacun vers un objet symbolique qui révèle leur vision du monde. Camille se tourne vers le <span class="proc">portrait d'une grand-tante religieuse</span> : modèle de renoncement, vie consacrée à Dieu et à l'abstinence sentimentale. Ce portrait est son idéal, ce qu'elle aspire à devenir.<br><br>
+Perdican, lui, se penche sur un <span class="proc">héliotrope</span> — une petite fleur. Face au mépris du Baron qui trouve la fleur insignifiante <span class="cite">« grosse comme une mouche »</span>, Perdican défend son choix : <span class="cite">« Cette petite fleur grosse comme une mouche a bien son prix »</span>. C'est une défense de la simplicité, de la nature, de la beauté modeste et authentique contre le paraître et le grandiose. En opposant le portrait religieux à l'héliotrope, Musset oppose deux philosophies de vie : le renoncement contre la célébration du vivant.
+</div>
+</div>
+</div>
+
+<div class="block">
+<div class="block-label">Conclusion (~30 sec)</div>
+<div class="ccl-box">
+Cette scène d'exposition installe avec précision le conflit central de la pièce : la spontanéité sensible de Perdican contre la retenue calculée de Camille. Les objets symboliques — portrait religieux contre héliotrope — anticipent les choix que les personnages feront au fil de la pièce, et le dénouement tragique auquel ces choix conduiront.<br><br>
+<span class="ouv">Ouverture :</span> On peut faire le lien avec le dénouement (texte 12) : c'est ce premier refus du baiser, cette première retenue, qui sera à l'origine de tous les jeux cruels qui mèneront à la mort de Rosette.
+</div>
+</div>
+
+</div>
+</div>
+
+<!-- ========================= T11 ========================= -->
+<div class="texte t" id="t11">
+<div class="texte-header">
+  <div class="texte-num">11</div>
+  <div class="texte-info">
+    <h2>Musset — On ne badine pas avec l'amour, Acte II, scène 5</h2>
+    <div class="meta">1834 · Drame romantique · Grande tirade de Perdican</div>
+  </div>
+  <span class="badge">THÉÂTRE</span>
+</div>
+<div class="texte-body">
+
+<div class="block">
+<div class="block-label">Introduction (~1 min 30)</div>
+<div class="intro-text">
+<div class="timing">⏱ ~1 min 30</div>
+Alfred de Musset publie <em>On ne badine pas avec l'amour</em> en 1834. Ce drame romantique mêle le comique et le tragique dans un jeu de séduction, de manipulation et d'orgueil entre Camille et Perdican.<br><br>
+Dans cette scène du deuxième acte, Perdican est blessé par le refus de Camille, qui lui a remis une lettre — en réalité écrite par sa gouvernante — exposant pourquoi les hommes ne valent pas la peine d'être aimés. Perdican réagit avec colère et passion. Il prononce une tirade en deux temps : d'abord une dénonciation virulente de l'influence des nonnes sur Camille, puis un éloge bouleversant de l'amour humain qui est l'une des plus belles pages du romantisme français.
+</div>
+<div class="lecture-note">🔊 LECTURE À VOIX HAUTE — Tirade : d'abord la colère, puis l'élévation lyrique</div>
+<div class="prob-box">Comment Perdican passe-t-il de la colère à un éloge vibrant de l'amour humain ?</div>
+<div style="margin-top:12px;font-size:13px;color:var(--muted);">
+Nous verrons d'abord la dénonciation véhémente de l'influence des nonnes sur Camille, puis l'éloge paradoxal de l'amour humain malgré ses imperfections.
+</div>
+</div>
+
+<div class="block">
+<div class="block-label">Explication linéaire (~8 min)</div>
+
+<div class="mvt-block">
+<div class="mvt-title"><span class="mvt-badge">MVT 1</span> Dénonciation de l'influence des nonnes</div>
+<div class="mvt-text">
+La tirade s'ouvre sur une <span class="proc">question rhétorique agressive</span> : <span class="cite">« Sais-tu ce que c'est que des nonnes, malheureuse fille ? »</span>. L'adjectif <span class="cite">« malheureuse »</span> traduit à la fois la pitié et le reproche. Perdican retourne contre les nonnes leur propre argument : elles <span class="cite">« représentent l'amour des hommes comme un mensonge »</span> — mais, dit-il, <span class="cite">« savent-elles qu'il y a pis encore, le mensonge de l'amour divin ? »</span><br><br>
+La <span class="proc">métaphore</span> <span class="cite">« le masque de plâtre que les nonnes t'ont placé sur les joues »</span> est saisissante : le couvent a figé Camille dans une froideur artificielle, l'a défigurée, a mis une façade de pierre sur un visage vivant.<br><br>
+L'<span class="proc">antiphrase ironique</span> <span class="cite">« ces femmes ont bien parlé »</span> est une fausse concession immédiatement démentie par la suite. La condamnation finale — <span class="cite">« le ciel n'est pas pour elles »</span> — est radicale, presque blasphématoire.
+</div>
+</div>
+
+<div class="mvt-block">
+<div class="mvt-title"><span class="mvt-badge">MVT 2</span> Éloge paradoxal de l'amour humain</div>
+<div class="mvt-text">
+Ce passage est l'un des plus célèbres du romantisme français. Il repose sur une <span class="proc">structure en concession</span> qui fonctionne en deux temps : l'accumulation des défauts de l'humanité, puis le renversement par le <span class="proc">« mais » adversatif</span>.<br><br>
+Les <span class="proc">énumérations hyperboliques</span> des défauts masculins et féminins — <span class="cite">« Tous les hommes sont menteurs, inconstants, faux, bavards, hypocrites, orgueilleux ou lâches… toutes les femmes sont perfides, artificieuses, vaniteuses »</span> — sont délibérément excessives. Puis la métaphore : <span class="cite">« le monde n'est qu'un égout sans fond »</span>. On a atteint le sommet du pessimisme.<br><br>
+Alors le <span class="proc">« mais »</span> opère le renversement : <span class="cite">« il y a au monde une chose sainte et sublime, c'est l'union de deux de ces êtres si imparfaits et si affreux »</span>. L'<span class="proc">anaphore</span> <span class="cite">« on est souvent trompé en amour, souvent blessé et souvent malheureux ; mais on aime »</span> martèle avec un rythme oratoire puissant que la souffrance n'annule pas l'amour.<br><br>
+La <span class="proc">phrase-clé</span> finale est : <span class="cite">« J'ai aimé. C'est moi qui ai vécu, et non pas un être factice créé par mon orgueil et mon ennui »</span>. L'amour devient la seule preuve d'une vie authentique. S'opposent <span class="cite">« moi »</span> — la vérité, la vie — et <span class="cite">« être factice »</span> — le mensonge du renoncement prôné par Camille et les nonnes.
+</div>
+</div>
+</div>
+
+<div class="block">
+<div class="block-label">Conclusion (~30 sec)</div>
+<div class="ccl-box">
+Cette tirade est emblématique du romantisme : l'amour, même douloureux, même trompeur, est ce qui donne sens à l'existence. Perdican défend la vérité des sentiments contre l'artifice du renoncement. C'est l'une des grandes déclarations d'amour de la littérature française — pas à une femme, mais à l'amour lui-même.<br><br>
+<span class="ouv">Ouverture :</span> On peut rapprocher ce discours de la pensée de Pascal dans les <em>Pensées</em> : Pascal dit que le divertissement permet d'échapper au malheur, alors que Perdican dit au contraire que souffrir en aimant vaut mieux que de ne rien ressentir.
+</div>
+</div>
+
+</div>
+</div>
+
+<!-- ========================= T12 ========================= -->
+<div class="texte t" id="t12">
+<div class="texte-header">
+  <div class="texte-num">12</div>
+  <div class="texte-info">
+    <h2>Musset — On ne badine pas avec l'amour, Acte III, scène 8</h2>
+    <div class="meta">1834 · Drame romantique · Dénouement · Aveu + mort de Rosette</div>
+  </div>
+  <span class="badge">THÉÂTRE</span>
+</div>
+<div class="texte-body">
+
+<div class="block">
+<div class="block-label">Introduction (~1 min 30)</div>
+<div class="intro-text">
+<div class="timing">⏱ ~1 min 30</div>
+Alfred de Musset publie <em>On ne badine pas avec l'amour</em> en 1834. Après deux actes de jeux cruels — orgueil, manipulation, tentatives de rendre l'autre jaloux — le dénouement réunit enfin Camille et Perdican dans un aveu mutuel. Mais cet aveu arrive trop tard.<br><br>
+Pour se venger du refus de Camille, Perdican a feint de courtiser Rosette, une jeune paysanne naïve. Camille, jalouse, l'a encouragé par orgueil. Dans cette dernière scène, Camille et Perdican se retrouvent seuls dans la chapelle et avouent enfin leur amour. Mais Rosette, cachée derrière l'autel, entend tout — et meurt.
+</div>
+<div class="lecture-note">🔊 LECTURE À VOIX HAUTE — Deux registres : lyrique pour l'aveu, tragique pour la mort</div>
+<div class="prob-box">Comment ce dénouement tragique transforme-t-il l'aveu amoureux en catastrophe, illustrant le titre de la pièce ?</div>
+<div style="margin-top:12px;font-size:13px;color:var(--muted);">
+Nous verrons d'abord l'aveu réciproque et la prière, puis l'irruption brutale de la tragédie avec la mort de Rosette et la séparation définitive.
+</div>
+</div>
+
+<div class="block">
+<div class="block-label">Explication linéaire (~8 min)</div>
+
+<div class="mvt-block">
+<div class="mvt-title"><span class="mvt-badge">MVT 1</span> L'aveu réciproque et la prière</div>
+<div class="mvt-text">
+L'<span class="proc">anaphore</span> <span class="cite">« Insensés que nous sommes ! nous nous aimons »</span>, reprise par Camille <span class="cite">« Oui, nous nous aimons, Perdican »</span>, crée une symétrie parfaite : les deux personnages disent enfin la même chose, au même moment. L'aveu est simultané, comme si la vérité ne pouvait être dite qu'ensemble.<br><br>
+La <span class="proc">métaphore filée</span> de la perle est d'une beauté poignante : <span class="cite">« le bonheur est une perle si rare dans cet océan d'ici-bas »</span>. Dieu leur avait offert ce bonheur, mais ils <span class="cite">« comme des enfants gâtés »</span>, en ont fait <span class="cite">« un jouet »</span>. Cette métaphore contient l'aveu de leur responsabilité dans le désastre.<br><br>
+Le <span class="proc">conditionnel passé</span> <span class="cite">« qui nous aurait conduits »</span> exprime le remords : ils imaginent la vie qu'ils auraient pu avoir et qu'ils ont gâchée par leur orgueil. Le <span class="proc">registre lyrique</span> — tutoiement de Dieu, exclamations, prière — atteint ici son sommet.
+</div>
+</div>
+
+<div class="mvt-block">
+<div class="mvt-title"><span class="mvt-badge">MVT 2</span> L'irruption de la tragédie</div>
+<div class="mvt-text">
+Le <span class="proc">coup de théâtre</span> arrive au moment même du baiser : <span class="cite">« Il la prend dans ses bras / on entend un grand cri derrière l'autel »</span>. La <span class="proc">didascalie</span> juxtapose les deux actions sans transition : le bonheur et la catastrophe sont simultanés.<br><br>
+La <span class="proc">métaphore</span> <span class="cite">« il me semble que mes mains sont couvertes de sang »</span> dit la culpabilité de Perdican avant même qu'il sache ce qui s'est passé. Son instinct lui dit qu'il a tué. La prière <span class="cite">« Je vous en supplie, mon Dieu ! ne faites pas de moi un meurtrier ! »</span> est désespérée, inutile : la mort est déjà là.<br><br>
+La dernière réplique de Camille est une <span class="proc">phrase-couperet</span> en deux mots : <span class="cite">« Elle est morte. Adieu, Perdican ! »</span>. La brièveté de cette phrase, après les longues tirades lyriques, est dévastrice. Elle dit la mort de Rosette et la fin de l'amour en même temps. Plus rien n'est possible. Le titre prend ici tout son sens tragique : on ne badine pas avec l'amour — jouer avec les sentiments d'autrui a des conséquences irréversibles.
+</div>
+</div>
+</div>
+
+<div class="block">
+<div class="block-label">Conclusion (~30 sec)</div>
+<div class="ccl-box">
+Ce dénouement mêle avec un art consommé le registre lyrique de l'aveu et le registre tragique de la mort. L'amour, joué comme un jeu d'orgueil, devient fatal. Rosette, la victime innocente, paie de sa vie les jeux cruels des deux protagonistes. La leçon est amère : on ne badine pas avec l'amour.<br><br>
+<span class="ouv">Ouverture :</span> On peut rapprocher ce dénouement de celui de <em>Roméo et Juliette</em> de Shakespeare : dans les deux cas, l'amour vrai arrive trop tard, des innocents meurent, et les survivants sont condamnés au remords.
+</div>
+</div>
+
+</div>
+</div>
+
+<footer style="text-align:center;padding:50px 20px;color:var(--muted);font-size:12px;border-top:1px solid var(--border);margin-top:20px;">
+  <p>12 textes oraux complets · Calibrés 12 minutes · Bac Français 1STI2D1 · 26 mai 2026</p>
+  <p style="margin-top:6px;">Intro ~1min30 · Lecture ~1min30 · Explication ~8min · Conclusion ~30sec · Grammaire ~2min</p>
+</footer>
+
+</body>
+</html>
